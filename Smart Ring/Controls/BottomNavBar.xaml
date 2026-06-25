@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smart_Ring.Controls.BottomNavBar">
+
+    <Grid BackgroundColor="{StaticResource BarColor}"
+          HeightRequest="68"
+          ColumnDefinitions="*,*,*">
+
+        <Label Grid.Column="0" Text="&#127968;" FontSize="26"
+               HorizontalOptions="Center" VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnHomeTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label Grid.Column="1" Text="&#128141;" FontSize="24"
+               HorizontalOptions="Center" VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnWearableTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+
+        <Label Grid.Column="2" Text="&#128100;" FontSize="24"
+               HorizontalOptions="Center" VerticalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnProfileTapped" />
+            </Label.GestureRecognizers>
+        </Label>
+
+    </Grid>
+
+</ContentView>

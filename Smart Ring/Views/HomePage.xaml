@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             x:Class="Smart_Ring.Views.HomePage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Barra superior especial del Home (no usa TopBar porque no tiene flecha de regreso) -->
+        <Grid Grid.Row="0" BackgroundColor="{StaticResource BarColor}" Padding="20,18" ColumnDefinitions="*,Auto,Auto">
+            <Label Grid.Column="0" Text="HOME" FontSize="22" FontAttributes="Bold"
+                   TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+            <Label Grid.Column="1" Text="Agregar dispositivo" FontSize="13"
+                   TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" Margin="0,0,10,0" />
+            <Frame Grid.Column="2" WidthRequest="38" HeightRequest="38" CornerRadius="19"
+                   BackgroundColor="Transparent" BorderColor="{StaticResource PrimaryAccentDark}"
+                   Padding="0" HasShadow="False" VerticalOptions="Center">
+                <Label Text="+" FontSize="22" TextColor="{StaticResource PrimaryAccentDark}"
+                       HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnAddDeviceTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Frame>
+        </Grid>
+
+        <!-- Contenido -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="18">
+
+                <Label x:Name="LabelWelcome" Text="¡Bienvenido Juan García!" FontSize="20"
+                       TextColor="{StaticResource TextPrimary}" />
+
+                <Frame Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="Historial de Fatiga" FontAttributes="Bold" FontSize="15"
+                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                        <GraphicsView x:Name="FatigueChartView" HeightRequest="190" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Índice de Alerta -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="10">
+                            <Label Text="ÍNDICE DE ALERTA" FontAttributes="Bold" FontSize="15"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Button Text="&#9654; Ver porcentaje de alerta"
+                                    Style="{StaticResource PillButton}"
+                                    HorizontalOptions="Start" Padding="18,0"
+                                    Clicked="OnAlertIndexTapped" />
+                        </VerticalStackLayout>
+                        <Frame Grid.Column="1" WidthRequest="58" HeightRequest="58" CornerRadius="29"
+                               BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False"
+                               VerticalOptions="Center">
+                            <Label Text="&#9888;&#65039;" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!-- Ritmo Cardíaco -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="10">
+                            <Label Text="RITMO CARDÍACO" FontAttributes="Bold" FontSize="15"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Button Text="&#9654; Medir BPM"
+                                    Style="{StaticResource PillButton}"
+                                    HorizontalOptions="Start" Padding="18,0"
+                                    Clicked="OnHeartRateTapped" />
+                        </VerticalStackLayout>
+                        <Frame Grid.Column="1" WidthRequest="58" HeightRequest="58" CornerRadius="29"
+                               BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False"
+                               VerticalOptions="Center">
+                            <Label Text="&#10084;&#65039;" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+                <!-- Oxígeno -->
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <VerticalStackLayout Grid.Column="0" Spacing="10">
+                            <Label Text="OXÍGENO" FontAttributes="Bold" FontSize="15"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Button Text="&#9654; Medir oxígeno en sangre"
+                                    Style="{StaticResource PillButton}"
+                                    HorizontalOptions="Start" Padding="18,0"
+                                    Clicked="OnOxygenTapped" />
+                        </VerticalStackLayout>
+                        <Frame Grid.Column="1" WidthRequest="58" HeightRequest="58" CornerRadius="29"
+                               BackgroundColor="{StaticResource DangerSoft}" Padding="0" HasShadow="False"
+                               VerticalOptions="Center">
+                            <Label Text="O&#8322;" FontSize="18" FontAttributes="Bold" TextColor="White"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Frame>
+                    </Grid>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNavBar Grid.Row="2" />
+
+    </Grid>
+
+</ContentPage>

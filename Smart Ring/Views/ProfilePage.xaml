@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             x:Class="Smart_Ring.Views.ProfilePage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:TopBar Grid.Row="0" Title="PERFIL" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="18">
+
+                <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                    <Frame WidthRequest="120" HeightRequest="120" CornerRadius="60"
+                           BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False">
+                        <Label Text="&#128100;" FontSize="56" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <Label x:Name="LabelName" Text="Juan García" FontSize="22"
+                           TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                </VerticalStackLayout>
+
+                <Frame Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout Spacing="14">
+
+                        <!-- Sexo -->
+                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
+                            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto">
+                                <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Text="Sexo" FontAttributes="Bold"
+                                       FontSize="14" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                                <RadioButton Grid.Row="0" Grid.Column="1" Content="Masculino" GroupName="Sexo"
+                                             IsChecked="True" TextColor="{StaticResource TextPrimary}" />
+                                <RadioButton Grid.Row="1" Grid.Column="1" Content="Femenino" GroupName="Sexo"
+                                             TextColor="{StaticResource TextPrimary}" />
+                                <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Text="Guardar"
+                                        Style="{StaticResource SecondaryPillButton}" FontSize="12" HeightRequest="40"
+                                        WidthRequest="92" Clicked="OnSaveSexClicked" />
+                            </Grid>
+                        </Frame>
+
+                        <!-- Dispositivo vinculado -->
+                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
+                            <VerticalStackLayout Spacing="6">
+                                <Label Text="Dispositivo Vinculado" FontAttributes="Bold" FontSize="14"
+                                       TextColor="{StaticResource TextPrimary}" />
+                                <Label Text="Smart Ring Pro   A4:C1:38:7F:2B   v2.4.1" FontSize="13"
+                                       TextColor="{StaticResource TextSecondary}" />
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Contacto de emergencia -->
+                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Contacto de emergencia" FontAttributes="Bold" FontSize="14"
+                                       TextColor="{StaticResource TextPrimary}" />
+
+                                <VerticalStackLayout Spacing="2">
+                                    <Entry x:Name="EntryEmergencyName" Placeholder="Nombre completo"
+                                           Style="{StaticResource UnderlineEntry}" />
+                                    <BoxView HeightRequest="1.5" Color="{StaticResource TextPrimary}" />
+                                </VerticalStackLayout>
+
+                                <VerticalStackLayout Spacing="2">
+                                    <Entry x:Name="EntryEmergencyPhone" Placeholder="Celular" Keyboard="Telephone"
+                                           Style="{StaticResource UnderlineEntry}" />
+                                    <BoxView HeightRequest="1.5" Color="{StaticResource TextPrimary}" />
+                                </VerticalStackLayout>
+
+                                <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
+                                    <Button Text="Guardar" Style="{StaticResource SecondaryPillButton}"
+                                            FontSize="12" HeightRequest="40" WidthRequest="90"
+                                            Clicked="OnSaveEmergencyContactClicked" />
+                                    <Button Text="Editar" Style="{StaticResource SecondaryPillButton}"
+                                            FontSize="12" HeightRequest="40" WidthRequest="90"
+                                            Clicked="OnEditEmergencyContactClicked" />
+                                </HorizontalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Mensajes SMS -->
+                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
+                            <Grid ColumnDefinitions="*,Auto">
+                                <VerticalStackLayout Grid.Column="0" Spacing="4">
+                                    <Label Text="Mensajes SMS" FontAttributes="Bold" FontSize="14"
+                                           TextColor="{StaticResource TextPrimary}" />
+                                    <Label Text="Enviar SMS a contacto de emergencia para compartir ubicación en tiempo real."
+                                           FontSize="12" TextColor="{StaticResource TextSecondary}" LineBreakMode="WordWrap" />
+                                </VerticalStackLayout>
+                                <Switch Grid.Column="1" x:Name="SwitchSms" IsToggled="True"
+                                        OnColor="{StaticResource PrimaryAccentDark}" VerticalOptions="Center" />
+                            </Grid>
+                        </Frame>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Label Text="Cerrar Sesión" TextColor="{StaticResource PrimaryAccentDark}"
+                       TextDecorations="Underline" FontSize="16" HorizontalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLogoutTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNavBar Grid.Row="2" />
+
+    </Grid>
+
+</ContentPage>

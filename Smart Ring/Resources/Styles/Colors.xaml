@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Paleta lavanda neutra, tomada de las interfaces de Smart Ring -->
+    <Color x:Key="BackgroundColor">#ECE7F8</Color>
+    <Color x:Key="BarColor">#D6C7F2</Color>
+    <Color x:Key="CardColor">#FFFFFF</Color>
+    <Color x:Key="PrimaryAccent">#C9B9EF</Color>
+    <Color x:Key="PrimaryAccentDark">#8A72D6</Color>
+    <Color x:Key="TextPrimary">#222222</Color>
+    <Color x:Key="TextSecondary">#9089A6</Color>
+    <Color x:Key="SuccessSoft">#8FBE6E</Color>
+    <Color x:Key="WarningSoft">#E8C16B</Color>
+    <Color x:Key="DangerSoft">#E2776B</Color>
+    <Color x:Key="DividerColor">#DCD5F0</Color>
+    <Color x:Key="ChipBackground">#EFE9FB</Color>
+
+    <!-- Botón principal: píldora lavanda con texto negro en negrita (igual que tus mockups) -->
+    <Style TargetType="Button" x:Key="PillButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryAccent}" />
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="CornerRadius" Value="26" />
+        <Setter Property="HeightRequest" Value="52" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="15" />
+        <Setter Property="BorderWidth" Value="0" />
+    </Style>
+
+    <!-- Botón secundario: píldora blanca (VINCULAR / DESVINCULAR / GUARDAR) -->
+    <Style TargetType="Button" x:Key="SecondaryPillButton">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardColor}" />
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="CornerRadius" Value="22" />
+        <Setter Property="HeightRequest" Value="48" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="BorderWidth" Value="0" />
+    </Style>
+
+    <Style TargetType="Frame" x:Key="CardStyle">
+        <Setter Property="BackgroundColor" Value="{StaticResource CardColor}" />
+        <Setter Property="CornerRadius" Value="22" />
+        <Setter Property="Padding" Value="18" />
+        <Setter Property="HasShadow" Value="True" />
+        <Setter Property="BorderColor" Value="Transparent" />
+    </Style>
+
+    <!-- Entradas sin caja, solo línea inferior, como en Login/Registro -->
+    <Style TargetType="Entry" x:Key="UnderlineEntry">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource TextSecondary}" />
+        <Setter Property="HeightRequest" Value="42" />
+        <Setter Property="FontSize" Value="16" />
+    </Style>
+
+    <Style TargetType="Label" x:Key="ScreenTitleLabel">
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="FontSize" Value="20" />
+        <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+    </Style>
+
+</ResourceDictionary>

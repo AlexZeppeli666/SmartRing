@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             x:Class="Smart_Ring.Views.AlertIndexPage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:TopBar Grid.Row="0" Title="ÍNDICE DE ALERTA" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="18">
+
+                <GraphicsView x:Name="GaugeView" HeightRequest="160" />
+
+                <Frame BackgroundColor="{StaticResource CardColor}" CornerRadius="22" Padding="16" HasShadow="True">
+                    <HorizontalStackLayout Spacing="8" HorizontalOptions="Center">
+                        <Label Text="Estado Actual:" FontAttributes="Bold" FontSize="15"
+                               TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                        <Ellipse WidthRequest="14" HeightRequest="14" Fill="{StaticResource SuccessSoft}" VerticalOptions="Center" />
+                        <Label x:Name="LabelStatus" Text="Óptimo" FontAttributes="Bold" FontSize="15"
+                               TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                    <Frame Grid.Column="0" Style="{StaticResource CardStyle}">
+                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label Text="CONTEO DE MICROSUEÑOS" FontAttributes="Bold" FontSize="13"
+                                   TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" />
+                            <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="22"
+                                   WidthRequest="60" HeightRequest="44" Padding="0" HasShadow="False">
+                                <Label Text="2" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <Label Text="Detectados" FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Style="{StaticResource CardStyle}">
+                        <VerticalStackLayout Spacing="10" HorizontalOptions="Center">
+                            <Label Text="TIEMPO EN TURNO" FontAttributes="Bold" FontSize="13"
+                                   TextColor="{StaticResource TextPrimary}" HorizontalTextAlignment="Center" />
+                            <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="22"
+                                   HeightRequest="44" Padding="14,0" HasShadow="False">
+                                <Label Text="4h : 12m" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"
+                                       HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Frame>
+                            <Label Text="Horas | Minutos" FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <Frame Style="{StaticResource CardStyle}">
+                    <VerticalStackLayout Spacing="14">
+                        <Label Text="TEST DE REACCIÓN RÁPIDA" FontAttributes="Bold" FontSize="15"
+                               TextColor="{StaticResource TextPrimary}" />
+                        <Label x:Name="LabelInstructions"
+                               Text="Presiona el botón para iniciar. Cuando cambie de color, tócalo lo más rápido posible."
+                               FontSize="13" TextColor="{StaticResource TextSecondary}" />
+
+                        <Button x:Name="BtnReflexTest"
+                                Text="&#9654; INICIAR PRUEBA"
+                                Style="{StaticResource PillButton}"
+                                HeightRequest="64"
+                                Clicked="OnReflexButtonClicked" />
+
+                        <Label x:Name="LabelResult" Text="" FontSize="14" FontAttributes="Bold"
+                               TextColor="{StaticResource SuccessSoft}" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNavBar Grid.Row="2" />
+
+    </Grid>
+
+</ContentPage>

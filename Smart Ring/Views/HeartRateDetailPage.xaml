@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             x:Class="Smart_Ring.Views.HeartRateDetailPage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:TopBar Grid.Row="0" Title="RITMO CARDÍACO (BPM)" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Frame Grid.Column="1" WidthRequest="56" HeightRequest="56" CornerRadius="28"
+                           BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False">
+                        <Label Text="&#10084;&#65039;" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                </Grid>
+
+                <Frame BackgroundColor="{StaticResource CardColor}" CornerRadius="140"
+                       WidthRequest="240" HeightRequest="240" HorizontalOptions="Center"
+                       Padding="0" HasShadow="True" Margin="0,-20,0,0">
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="8">
+                        <Label x:Name="LabelBpm" Text="-- BPM" FontSize="36" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                        <Label x:Name="LabelStatusText" Text="&#8226; Calculando..." FontSize="14"
+                               TextColor="{StaticResource PrimaryAccentDark}" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="{StaticResource CardColor}" CornerRadius="16" Padding="10,6"
+                       HasShadow="False" HorizontalOptions="Center">
+                    <Label x:Name="LabelBadge" Text="Normal" FontSize="13" TextColor="{StaticResource TextPrimary}" />
+                </Frame>
+
+                <Frame Style="{StaticResource CardStyle}">
+                    <Grid ColumnDefinitions="*,Auto,*,Auto,*">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4" HorizontalOptions="Center">
+                            <Label Text="Mínimo" FontSize="13" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center" />
+                            <Label Text="62 BPM" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                        <BoxView Grid.Column="1" WidthRequest="1.5" Color="{StaticResource DividerColor}" />
+                        <VerticalStackLayout Grid.Column="2" Spacing="4" HorizontalOptions="Center">
+                            <Label Text="Promedio" FontSize="13" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center" />
+                            <Label Text="75 BPM" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                        <BoxView Grid.Column="3" WidthRequest="1.5" Color="{StaticResource DividerColor}" />
+                        <VerticalStackLayout Grid.Column="4" Spacing="4" HorizontalOptions="Center">
+                            <Label Text="Máximo" FontSize="13" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center" />
+                            <Label Text="104 BPM" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Frame>
+
+                <Label Text="El algoritmo analiza descensos bruscos en este valor combinados con la falta de movimiento para calcular el inicio de somnolencia."
+                       FontSize="12" TextColor="{StaticResource TextSecondary}" />
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNavBar Grid.Row="2" />
+
+    </Grid>
+
+</ContentPage>

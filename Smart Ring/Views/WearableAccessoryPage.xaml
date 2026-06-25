@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             x:Class="Smart_Ring.Views.WearableAccessoryPage"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:TopBar Grid.Row="0" Title="WEARABLE" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="16">
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+                    <Frame Grid.Column="0" WidthRequest="110" HeightRequest="110" CornerRadius="20"
+                           BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False">
+                        <Label Text="&#128141;" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center" />
+                    </Frame>
+                    <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
+                        <Label x:Name="LabelBattery" Text="&#128267; 100%" FontSize="18" FontAttributes="Bold"
+                               TextColor="{StaticResource TextPrimary}" />
+                        <HorizontalStackLayout Spacing="8">
+                            <Label x:Name="LabelConnection" Text="Conectado" FontSize="16"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Ellipse x:Name="ConnectionDot" WidthRequest="14" HeightRequest="14"
+                                     Fill="{StaticResource SuccessSoft}" VerticalOptions="Center" />
+                        </HorizontalStackLayout>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Button x:Name="BtnLink" Text="VINCULAR" Style="{StaticResource SecondaryPillButton}"
+                        Clicked="OnLinkClicked" />
+                <Button x:Name="BtnUnlink" Text="DESVINCULAR" Style="{StaticResource SecondaryPillButton}"
+                        Clicked="OnUnlinkClicked" />
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                    <Frame Grid.Column="0" Style="{StaticResource CardStyle}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="RECIBIR NOTIFICACIONES" FontAttributes="Bold" FontSize="12"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Switch x:Name="SwitchNotifications" IsToggled="True"
+                                    OnColor="{StaticResource PrimaryAccentDark}"
+                                    Toggled="OnAnySwitchToggled" />
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Style="{StaticResource CardStyle}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="ALERTA DE BATERÍA" FontAttributes="Bold" FontSize="12"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Switch x:Name="SwitchBatteryAlert" IsToggled="True"
+                                    OnColor="{StaticResource PrimaryAccentDark}"
+                                    Toggled="OnAnySwitchToggled" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+                <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
+                    <Frame Grid.Column="0" Style="{StaticResource CardStyle}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="VIBRACIÓN" FontAttributes="Bold" FontSize="13"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Slider x:Name="SliderVibration" Minimum="0" Maximum="1" Value="0.5"
+                                    MinimumTrackColor="{StaticResource PrimaryAccentDark}"
+                                    MaximumTrackColor="{StaticResource DividerColor}"
+                                    ThumbColor="{StaticResource PrimaryAccentDark}"
+                                    DragCompleted="OnVibrationSliderDragCompleted" />
+                            <Grid ColumnDefinitions="*,*">
+                                <Label Grid.Column="0" Text="Suave" FontSize="11" TextColor="{StaticResource TextSecondary}" />
+                                <Label Grid.Column="1" Text="Fuerte" FontSize="11" TextColor="{StaticResource TextSecondary}"
+                                       HorizontalOptions="End" />
+                            </Grid>
+                        </VerticalStackLayout>
+                    </Frame>
+                    <Frame Grid.Column="1" Style="{StaticResource CardStyle}">
+                        <VerticalStackLayout Spacing="10">
+                            <Label Text="ALARMA" FontAttributes="Bold" FontSize="13"
+                                   TextColor="{StaticResource TextPrimary}" />
+                            <Button x:Name="BtnAlarm" Text="&#9654; EJECUTAR ALARMA"
+                                    Style="{StaticResource PillButton}"
+                                    FontSize="12" HeightRequest="44"
+                                    Clicked="OnExecuteAlarmClicked" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </Grid>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNavBar Grid.Row="2" />
+
+    </Grid>
+
+</ContentPage>
