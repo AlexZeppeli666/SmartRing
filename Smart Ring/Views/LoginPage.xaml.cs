@@ -1,3 +1,5 @@
+using Smart_Ring.Services;
+
 namespace Smart_Ring.Views;
 
 public partial class LoginPage : ContentPage
@@ -9,18 +11,49 @@ public partial class LoginPage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(EntryUsername.Text) || string.IsNullOrWhiteSpace(EntryPassword.Text))
+        string username = EntryUsername.Text?.Trim() ?? string.Empty;
+        string password = EntryPassword.Text ?? string.Empty;
+
+        // 1. Validación básica de campos vacíos
+        if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            await DisplayAlert("Datos incompletos", "Ingresa tu usuario y contraseña para continuar.", "OK");
+            await DisplayAlert("Campos Vacíos", "Por favor, ingresa tu usuario y contraseña.", "OK");
             return;
         }
 
-        // Prototipo: no hay backend real, se simula el inicio de sesión.
-        await Shell.Current.GoToAsync("//HomePage");
+        try
+        {
+            // 2. Recuperamos el servicio de base de datos desde las dependencias de la App
+            var dbService = App.Current?.Handler?.MauiContext?.Services.GetService<DatabaseService>();
+
+            if (dbService == null)
+            {
+                await DisplayAlert("Error", "No se pudo conectar a la base de datos local.", "OK");
+                return;
+            }
+
+            // 3. Validamos las credenciales contra la tabla de SQLite
+            var usuarioValido = await dbService.ValidateLoginAsync(username, password);
+
+            if (usuarioValido != null)
+            {
+                await DisplayAlert("¡Bienvenido!", $"Hola de nuevo, {usuarioValido.FirstName}.", "OK");
+
+                await Navigation.PushAsync(new HomePage());
+            }
+            else
+            {
+                await DisplayAlert("Acceso Denegado", "Usuario o contraseña incorrectos. Inténtalo de nuevo.", "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error Crítico", $"Ocurrió un inconveniente: {ex.Message}", "OK");
+        }
     }
 
     private async void OnRegisterTapped(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync("//RegisterPage");
+        await Navigation.PushAsync(new RegisterPage());
     }
 }

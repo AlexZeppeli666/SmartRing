@@ -1,6 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace Smart_Ring;
+﻿namespace Smart_Ring;
+using SQLite;
 
 public static class MauiProgram
 {
@@ -11,17 +10,21 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("OpenSans-Regular", "OpenSansRegular");
+                fonts.AddFont("OpenSans-Semibold", "OpenSansSemibold");
             });
 
-        // Nota: Microsoft.Maui.Devices.Vibration es un servicio estático
-        // (Vibration.Default), no requiere registro en el contenedor de DI.
+        // 🛠️ SOLUCIÓN: Quitar la línea nativa con la conversión de tipo correcta
+#if ANDROID
+        Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping("NoUnderlineNative", (handler, view) =>
+        {
+            var nativeColor = Microsoft.Maui.Platform.ColorExtensions.ToPlatform(Colors.Transparent);
+            handler.PlatformView.BackgroundTintList = Android.Content.Res.ColorStateList.ValueOf(nativeColor);
 
-#if DEBUG
-        builder.Logging.AddDebug();
+            handler.PlatformView.Background = null;
+        });
 #endif
-
+        builder.Services.AddSingleton<Services.DatabaseService>();
         return builder.Build();
     }
 }

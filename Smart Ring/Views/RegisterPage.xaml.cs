@@ -1,3 +1,6 @@
+using Smart_Ring.Models;
+using Smart_Ring.Services;
+
 namespace Smart_Ring.Views;
 
 public partial class RegisterPage : ContentPage
@@ -9,21 +12,42 @@ public partial class RegisterPage : ContentPage
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrWhiteSpace(EntryFullName.Text) ||
-            string.IsNullOrWhiteSpace(EntryUsername.Text) ||
-            string.IsNullOrWhiteSpace(EntryPassword.Text))
+        var nuevoUsuario = new UserModel
         {
-            await DisplayAlert("Datos incompletos", "Completa todos los campos para registrarte.", "OK");
+            FirstName = EntryFirstName.Text?.Trim() ?? string.Empty,
+            LastNamePaternal = EntryLastNamePaternal.Text?.Trim() ?? string.Empty,
+            LastNameMaternal = EntryLastNameMaternal.Text?.Trim() ?? string.Empty,
+            Username = EntryUsername.Text?.Trim() ?? string.Empty,
+            Password = EntryPassword.Text ?? string.Empty
+        };
+
+        if (string.IsNullOrEmpty(nuevoUsuario.FirstName) || string.IsNullOrEmpty(nuevoUsuario.Username) || string.IsNullOrEmpty(nuevoUsuario.Password))
+        {
+            await DisplayAlert("Error", "Por favor, llena los datos obligatorios.", "OK");
             return;
         }
 
-        // Prototipo: no hay backend real, se simula el registro exitoso.
-        await DisplayAlert("Registro exitoso", $"Bienvenido, {EntryFullName.Text}.", "Continuar");
-        await Shell.Current.GoToAsync("//HomePage");
+        // Llamamos al servicio (Instanciación directa o vía inyección de dependencias)
+        var dbService = App.Current?.Handler?.MauiContext?.Services.GetService<DatabaseService>() ?? new DatabaseService();
+        int resultado = await dbService.RegisterUserAsync(nuevoUsuario);
+
+        if (resultado == -1)
+        {
+            await DisplayAlert("Error", "El nombre de usuario ya está registrado.", "OK");
+        }
+        else if (resultado > 0)
+        {
+            await DisplayAlert("Éxito", "Usuario guardado localmente en SQLite.", "OK");
+            await Navigation.PopAsync();
+        }
+        else
+        {
+            await DisplayAlert("Error", "No se pudo guardar en la base de datos.", "OK");
+        }
     }
 
     private async void OnBackToLoginTapped(object sender, TappedEventArgs e)
     {
-        await Shell.Current.GoToAsync("//LoginPage");
+        await Navigation.PopAsync();
     }
 }
