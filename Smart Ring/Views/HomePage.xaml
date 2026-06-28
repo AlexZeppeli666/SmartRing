@@ -99,7 +99,11 @@
                 <Frame Style="{StaticResource CardStyle}" Padding="20,15">
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="ÍNDICE DE ALERTA" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Button Grid.Row="1" Grid.Column="0" Text="▶ Ver porcentaje de alerta" Style="{StaticResource PillButton}" HeightRequest="45" HorizontalOptions="Start" Padding="20,0"/>
+                        <Button Grid.Row="1" Grid.Column="0" 
+                Text="▶ Ver porcentaje de alerta" 
+                Style="{StaticResource PillButton}" 
+                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
+                Clicked="OnAlertIndexTapped"/>
 
                         <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#F5F0FF" HasShadow="False" Padding="0" VerticalOptions="Center">
                             <Label Text="⚠️" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -110,7 +114,11 @@
                 <Frame Style="{StaticResource CardStyle}" Padding="20,15">
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="RITMO CARDÍACO" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Button Grid.Row="1" Grid.Column="0" Text="▶ Medir BPM" Style="{StaticResource PillButton}" HeightRequest="45" HorizontalOptions="Start" Padding="20,0"/>
+                        <Button Grid.Row="1" Grid.Column="0" 
+                Text="▶ Medir BPM" 
+                Style="{StaticResource PillButton}" 
+                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
+                Clicked="OnHeartRateTapped"/>
 
                         <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#FFF0F2" HasShadow="False" Padding="0" VerticalOptions="Center">
                             <Label Text="❤️" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center"/>
@@ -121,7 +129,11 @@
                 <Frame Style="{StaticResource CardStyle}" Padding="20,15">
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="OXÍGENO" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
-                        <Button Grid.Row="1" Grid.Column="0" Text="▶ Medir oxígeno en sangre" Style="{StaticResource PillButton}" HeightRequest="45" HorizontalOptions="Start" Padding="20,0"/>
+                        <Button Grid.Row="1" Grid.Column="0" 
+                Text="▶ Medir oxígeno en sangre" 
+                Style="{StaticResource PillButton}" 
+                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
+                Clicked="OnOxygenTapped"/>
 
                         <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#E57373" HasShadow="False" Padding="0" VerticalOptions="Center">
                             <Label Text="O₂" FontSize="22" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
