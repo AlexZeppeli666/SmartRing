@@ -13,8 +13,9 @@
                 <VerticalStackLayout Spacing="14" HorizontalOptions="Center" Margin="0,0,0,30">
                     <Frame WidthRequest="150" HeightRequest="150" CornerRadius="75"
                            BackgroundColor="{StaticResource PrimaryAccent}"
-                           Padding="0" HasShadow="False" HorizontalOptions="Center">
-                        <Label Text="&#128141;" FontSize="64" HorizontalOptions="Center" VerticalOptions="Center" />
+                           Padding="0" HasShadow="False" HorizontalOptions="Center"
+                           IsClippedToBounds="True">
+                        <Image Source="smartring.png" Aspect="AspectFill" />
                     </Frame>
                     <Label Text="SMART RING" FontSize="34" FontAttributes="Bold"
                            TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />

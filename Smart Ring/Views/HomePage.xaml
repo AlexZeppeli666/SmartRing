@@ -29,7 +29,9 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="20" Spacing="18">
 
-                <Label x:Name="LabelWelcome" Text="¡Bienvenido Juan García!" FontSize="20"
+                <Label x:Name="LabelWelcome" 
+                       Text="¡Bienvenido(a)!" 
+                       FontSize="20"
                        TextColor="{StaticResource TextPrimary}" />
 
                 <Frame Style="{StaticResource CardStyle}">

@@ -37,7 +37,13 @@ public partial class LoginPage : ContentPage
 
             if (usuarioValido != null)
             {
-                await DisplayAlert("¡Bienvenido!", $"Hola de nuevo, {usuarioValido.FirstName}.", "OK");
+                // ==================== 💡 ASIGNAR LA SESIÓN GLOBAL ====================
+                // Guardamos los datos reales extraídos de SQLite antes de ir al Home
+                SessionService.UsuarioActual = usuarioValido;
+                SessionService.NombreUsuario = usuarioValido.FirstName; // Aquí se guardará "Phany" (o el nombre real)
+                // =====================================================================
+
+                await DisplayAlert("¡Bienvenido(a)!", $"Hola de nuevo, {usuarioValido.FirstName}.", "OK");
 
                 await Navigation.PushAsync(new HomePage());
             }

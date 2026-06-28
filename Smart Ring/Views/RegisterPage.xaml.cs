@@ -37,7 +37,13 @@ public partial class RegisterPage : ContentPage
         }
         else if (resultado > 0)
         {
-            await DisplayAlert("Éxito", "Usuario guardado localmente en SQLite.", "OK");
+            // 1. Guardamos los datos en la sesión global
+            SessionService.UsuarioActual = nuevoUsuario;
+            SessionService.NombreUsuario = nuevoUsuario.FirstName;
+
+            await DisplayAlert("Éxito", "Usuario registrado correctamente.", "OK");
+
+            // 2. 💡 CORRECCIÓN AQUÍ: Volvemos al PopAsync para evitar que truene Android
             await Navigation.PopAsync();
         }
         else
