@@ -10,7 +10,6 @@ public partial class HomePage : ContentPage
     public HomePage()
     {
         InitializeComponent();
-        FatigueChartView.Drawable = _fatigueChart;
     }
 
     protected override void OnAppearing()

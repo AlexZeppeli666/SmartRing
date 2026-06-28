@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Smart_Ring.Componentes.BottomNavBar"
+             BackgroundColor="{StaticResource PrimaryAccent}">
+
+    <Grid HeightRequest="65" ColumnDefinitions="*, *, *">
+
+        <!-- Tab 1: Home (Botón con Evento) -->
+        <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="🏠" FontSize="24" HorizontalOptions="Center"/>
+            <!-- Línea indicadora de pestaña activa -->
+            <BoxView x:Name="ActiveHomeIndicator" HeightRequest="3" WidthRequest="20" Color="{StaticResource PrimaryAccentDark}" Margin="0,2,0,0" HorizontalOptions="Center" IsVisible="False"/>
+            <VerticalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnHomeTapped" />
+            </VerticalStackLayout.GestureRecognizers>
+        </VerticalStackLayout>
+
+        <!-- Tab 2: Dispositivo Smart Ring -->
+        <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="💍" FontSize="24" HorizontalOptions="Center"/>
+            <BoxView x:Name="ActiveDeviceIndicator" HeightRequest="3" WidthRequest="20" Color="{StaticResource PrimaryAccentDark}" Margin="0,2,0,0" HorizontalOptions="Center" IsVisible="False"/>
+            <VerticalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnDeviceTapped" />
+            </VerticalStackLayout.GestureRecognizers>
+        </VerticalStackLayout>
+
+        <!-- Tab 3: Perfil -->
+        <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
+            <Label Text="👤" FontSize="24" HorizontalOptions="Center"/>
+            <BoxView x:Name="ActiveProfileIndicator" HeightRequest="3" WidthRequest="20" Color="{StaticResource PrimaryAccentDark}" Margin="0,2,0,0" HorizontalOptions="Center" IsVisible="False"/>
+            <VerticalStackLayout.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnProfileTapped" />
+            </VerticalStackLayout.GestureRecognizers>
+        </VerticalStackLayout>
+
+    </Grid>
+</ContentView>

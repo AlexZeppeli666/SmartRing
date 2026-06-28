@@ -1,4 +1,4 @@
-namespace Smart_Ring.Controls;
+namespace Smart_Ring.Componentes;
 
 public partial class TopBar : ContentView
 {
@@ -15,7 +15,6 @@ public partial class TopBar : ContentView
         set => SetValue(TitleProperty, value);
     }
 
-    /// <summary>Se dispara al tocar la flecha de regreso. Si no se suscribe, navega hacia atrás por defecto.</summary>
     public event EventHandler? BackTapped;
 
     public TopBar()

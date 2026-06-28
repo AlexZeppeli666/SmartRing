@@ -112,7 +112,7 @@ public partial class AlertIndexPage : ContentPage
         }
         catch (FeatureNotSupportedException)
         {
-            // Dispositivo sin soporte de vibración: se ignora, no es crítico.
+            // Sin soporte: ignorar silenciosamente
         }
         catch (Exception ex)
         {
