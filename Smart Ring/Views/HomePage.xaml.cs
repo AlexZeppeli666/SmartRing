@@ -9,7 +9,6 @@ public partial class HomePage : ContentPage
     public HomePage()
     {
         InitializeComponent();
-        FatigueChartView.Drawable = _fatigueChart;
     }
 
     private async void OnAddDeviceTapped(object sender, TappedEventArgs e)

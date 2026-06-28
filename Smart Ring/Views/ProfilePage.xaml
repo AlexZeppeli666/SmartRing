@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             xmlns:controls="clr-namespace:Smart_Ring.Componentes"
              x:Class="Smart_Ring.Views.ProfilePage"
              BackgroundColor="{StaticResource BackgroundColor}">
 

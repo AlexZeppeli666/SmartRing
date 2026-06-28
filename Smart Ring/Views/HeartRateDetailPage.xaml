@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             xmlns:controls="clr-namespace:Smart_Ring.Componentes"
+             xmlns:comp="clr-namespace:Smart_Ring.Componentes"
              x:Class="Smart_Ring.Views.HeartRateDetailPage"
              BackgroundColor="{StaticResource BackgroundColor}">
 
@@ -15,7 +16,7 @@
                 <Grid ColumnDefinitions="*,Auto">
                     <Frame Grid.Column="1" WidthRequest="56" HeightRequest="56" CornerRadius="28"
                            BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False">
-                        <Label Text="&#10084;&#65039;" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                        <Label Text="❤️" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
                     </Frame>
                 </Grid>
 
@@ -25,7 +26,7 @@
                     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="8">
                         <Label x:Name="LabelBpm" Text="-- BPM" FontSize="36" FontAttributes="Bold"
                                TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
-                        <Label x:Name="LabelStatusText" Text="&#8226; Calculando..." FontSize="14"
+                        <Label x:Name="LabelStatusText" Text="• Calculando..." FontSize="14"
                                TextColor="{StaticResource PrimaryAccentDark}" HorizontalOptions="Center" />
                     </VerticalStackLayout>
                 </Frame>
@@ -60,8 +61,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <controls:BottomNavBar Grid.Row="2" />
+        <comp:BottomNavBar Grid.Row="2" />
 
     </Grid>
-
 </ContentPage>

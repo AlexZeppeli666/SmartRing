@@ -37,7 +37,7 @@ public partial class RegisterPage : ContentPage
         }
         else if (resultado > 0)
         {
-            await DisplayAlert("Éxito", "Usuario guardado localmente en SQLite.", "OK");
+            await DisplayAlert("Éxito", "Cuenta creada con éxito.", "OK");
             await Navigation.PopAsync();
         }
         else

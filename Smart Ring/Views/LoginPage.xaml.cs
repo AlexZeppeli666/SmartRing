@@ -37,8 +37,6 @@ public partial class LoginPage : ContentPage
 
             if (usuarioValido != null)
             {
-                await DisplayAlert("¡Bienvenido!", $"Hola de nuevo, {usuarioValido.FirstName}.", "OK");
-
                 await Navigation.PushAsync(new HomePage());
             }
             else

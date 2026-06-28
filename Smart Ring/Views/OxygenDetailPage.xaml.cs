@@ -17,7 +17,6 @@ public partial class OxygenDetailPage : ContentPage
     {
         base.OnAppearing();
 
-        // Simula que el anillo entrega una lectura de SpO2 tras un par de segundos.
         _simulationTimer = Dispatcher.CreateTimer();
         _simulationTimer.Interval = TimeSpan.FromSeconds(2);
         _simulationTimer.Tick += (s, e) =>
@@ -46,10 +45,6 @@ public partial class OxygenDetailPage : ContentPage
         PositionIndicator();
     }
 
-    /// <summary>
-    /// Posiciona la línea indicadora dentro de la barra de rango (70-100)
-    /// de forma proporcional al ancho real del contenedor.
-    /// </summary>
     private void PositionIndicator()
     {
         if (_currentValue is null || RangeBarGrid.Width <= 0)

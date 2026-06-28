@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:Smart_Ring.Controls"
+             xmlns:controls="clr-namespace:Smart_Ring.Componentes"
+             xmlns:comp="clr-namespace:Smart_Ring.Componentes"
              x:Class="Smart_Ring.Views.OxygenDetailPage"
              BackgroundColor="{StaticResource BackgroundColor}">
 
@@ -12,7 +13,6 @@
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="20" Spacing="22">
 
-                <!-- Mini panel de tendencia (decorativo, simplificado del mockup) -->
                 <Grid HeightRequest="120" ColumnDefinitions="*,Auto">
                     <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" Spacing="28">
                         <BoxView HeightRequest="1.5" Color="{StaticResource PrimaryAccentDark}" />
@@ -40,7 +40,7 @@
                                    TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
                             <Frame Grid.Column="1" WidthRequest="56" HeightRequest="56" CornerRadius="28"
                                    BackgroundColor="{StaticResource DangerSoft}" Padding="0" HasShadow="False">
-                                <Label Text="O&#8322;" FontSize="18" FontAttributes="Bold" TextColor="White"
+                                <Label Text="O₂" FontSize="18" FontAttributes="Bold" TextColor="White"
                                        HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
                         </Grid>
@@ -53,7 +53,7 @@
                                      HorizontalOptions="Start" IsVisible="False" />
                         </Grid>
 
-                        <Grid ColumnDefinitions="*,*,*,*">
+                        <Grid ColumnDefinitions="*,*,*, *">
                             <Label Grid.Column="0" Text="70" FontSize="14" TextColor="{StaticResource PrimaryAccentDark}" HorizontalOptions="Center" />
                             <Label Grid.Column="1" Text="80" FontSize="14" TextColor="{StaticResource PrimaryAccentDark}" HorizontalOptions="Center" />
                             <Label Grid.Column="2" Text="90" FontSize="14" TextColor="{StaticResource PrimaryAccentDark}" HorizontalOptions="Center" />
@@ -69,8 +69,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
-        <controls:BottomNavBar Grid.Row="2" />
+        <comp:BottomNavBar Grid.Row="2" />
 
     </Grid>
-
 </ContentPage>

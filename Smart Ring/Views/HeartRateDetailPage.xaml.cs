@@ -14,13 +14,11 @@ public partial class HeartRateDetailPage : ContentPage
     {
         base.OnAppearing();
 
-        // Parpadeo de "Calculando..." mientras no hay lectura.
         _blinkTimer = Dispatcher.CreateTimer();
         _blinkTimer.Interval = TimeSpan.FromMilliseconds(700);
         _blinkTimer.Tick += (s, e) => LabelStatusText.Opacity = LabelStatusText.Opacity == 1 ? 0.3 : 1;
         _blinkTimer.Start();
 
-        // Simula que el anillo entrega una lectura real tras un par de segundos.
         _simulationTimer = Dispatcher.CreateTimer();
         _simulationTimer.Interval = TimeSpan.FromSeconds(2.5);
         _simulationTimer.Tick += (s, e) =>
