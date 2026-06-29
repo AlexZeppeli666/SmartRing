@@ -6,6 +6,11 @@
        Shell.FlyoutBehavior="Disabled"
        Shell.NavBarIsVisible="False">
 
-    <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" />
+    <TabBar Shell.TabBarIsVisible="False">
+        <ShellContent ContentTemplate="{DataTemplate views:LoginPage}" Route="LoginPage" />
+        <ShellContent ContentTemplate="{DataTemplate views:HomePage}" Route="HomePage" />
+        <ShellContent ContentTemplate="{DataTemplate views:WearableAccessoryPage}" Route="WearableAccessoryPage" />
+        <ShellContent ContentTemplate="{DataTemplate views:ProfilePage}" Route="ProfilePage" />
+    </TabBar>
 
 </Shell>

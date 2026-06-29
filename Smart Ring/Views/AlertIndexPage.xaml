@@ -35,7 +35,7 @@
                                 <Label Text="2" FontSize="20" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}"
                                        HorizontalOptions="Center" VerticalOptions="Center" />
                             </Frame>
-                            <Label Text="Detectados" FontSize="13" TextColor="{StaticResource TextSecondary}" />
+                            <Label Text="Microsueños Detectados" FontSize="13" TextColor="{StaticResource TextSecondary}" />
                         </VerticalStackLayout>
                     </Frame>
                     <Frame Grid.Column="1" Style="{StaticResource CardStyle}">

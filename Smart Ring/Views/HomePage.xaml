@@ -52,13 +52,13 @@
                        FontSize="20"
                        TextColor="{StaticResource TextPrimary}" />
 
-                        <Grid ColumnDefinitions="*, *, *, *, *" Margin="25,0,0,0">
-                            <Label Grid.Column="0" Text="ene 2021" FontSize="10" TextColor="#999999" HorizontalOptions="Center"/>
-                            <Label Grid.Column="1" Text="ene 2022" FontSize="10" TextColor="#999999" HorizontalOptions="Center"/>
-                            <Label Grid.Column="2" Text="ene 2023" FontSize="10" TextColor="#999999" HorizontalOptions="Center"/>
-                            <Label Grid.Column="3" Text="ene 2024" FontSize="10" TextColor="#999999" HorizontalOptions="Center"/>
-                            <Label Grid.Column="4" Text="ene 2025" FontSize="10" TextColor="#999999" HorizontalOptions="Center"/>
-                        </Grid>
+                <Frame Style="{StaticResource CardStyle}" Padding="20,15">
+                    <VerticalStackLayout Spacing="10">
+                        <Label Text="Historial de Fatiga" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
+
+                        <GraphicsView x:Name="FatigueChartView" 
+                                      HeightRequest="150" 
+                                      HorizontalOptions="FillAndExpand" />
                     </VerticalStackLayout>
                 </Frame>
 
@@ -66,13 +66,17 @@
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="ÍNDICE DE ALERTA" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
                         <Button Grid.Row="1" Grid.Column="0" 
-                Text="▶ Ver porcentaje de alerta" 
-                Style="{StaticResource PillButton}" 
-                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
-                Clicked="OnAlertIndexTapped"/>
+                                Text="▶ Ver porcentaje de alerta" 
+                                Style="{StaticResource PillButton}" 
+                                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
+                                Clicked="OnAlertIndexTapped"/>
 
                         <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#F5F0FF" HasShadow="False" Padding="0" VerticalOptions="Center">
-                            <Label Text="⚠️" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Image Source="alerta.png" 
+                                   WidthRequest="50" 
+                                   HeightRequest="50" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center" />
                         </Frame>
                     </Grid>
                 </Frame>
@@ -81,13 +85,17 @@
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="RITMO CARDÍACO" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
                         <Button Grid.Row="1" Grid.Column="0" 
-                Text="▶ Medir BPM" 
-                Style="{StaticResource PillButton}" 
-                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
-                Clicked="OnHeartRateTapped"/>
+                                Text="▶ Medir BPM" 
+                                Style="{StaticResource PillButton}" 
+                                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
+                                Clicked="OnHeartRateTapped"/>
 
                         <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#FFF0F2" HasShadow="False" Padding="0" VerticalOptions="Center">
-                            <Label Text="❤️" FontSize="26" HorizontalOptions="Center" VerticalOptions="Center"/>
+                            <Image Source="cardio.png" 
+                                   WidthRequest="60" 
+                                   HeightRequest="60" 
+                                   HorizontalOptions="Center" 
+                                   VerticalOptions="Center" />
                         </Frame>
                     </Grid>
                 </Frame>
@@ -96,12 +104,15 @@
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="OXÍGENO" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
                         <Button Grid.Row="1" Grid.Column="0" 
-                Text="▶ Medir oxígeno en sangre" 
-                Style="{StaticResource PillButton}" 
-                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
-                Clicked="OnOxygenTapped"/>
+                                Text="▶ Medir oxígeno en sangre" 
+                                Style="{StaticResource PillButton}" 
+                                HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
+                                Clicked="OnOxygenTapped"/>
 
-                        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#E57373" HasShadow="False" Padding="0" VerticalOptions="Center">
+                        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#E57373" 
+                               HasShadow="False" 
+                               Padding="0" 
+                               VerticalOptions="Center">
                             <Label Text="O₂" FontSize="22" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
                         </Frame>
                     </Grid>

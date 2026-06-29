@@ -8,9 +8,9 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
 
-        // REGISTRA AQUÍ TUS PÁGINAS DE DETALLE
-        Routing.RegisterRoute(nameof(Views.HeartRateDetailPage), typeof(Views.HeartRateDetailPage));
-        Routing.RegisterRoute(nameof(Views.OxygenDetailPage), typeof(Views.OxygenDetailPage));
-        Routing.RegisterRoute(nameof(Views.AlertIndexPage), typeof(Views.AlertIndexPage));
+        // REGISTRA AQUÍ TUS PÁGINAS DE DETALLE (Se abren encima de las pestañas principales)
+        Routing.RegisterRoute(nameof(HeartRateDetailPage), typeof(HeartRateDetailPage));
+        Routing.RegisterRoute(nameof(OxygenDetailPage), typeof(OxygenDetailPage));
+        Routing.RegisterRoute(nameof(AlertIndexPage), typeof(AlertIndexPage));
     }
 }

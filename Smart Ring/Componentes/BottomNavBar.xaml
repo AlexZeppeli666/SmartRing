@@ -6,28 +6,24 @@
 
     <Grid HeightRequest="65" ColumnDefinitions="*, *, *">
 
-        <!-- Tab 1: Home (Botón con Evento) -->
         <VerticalStackLayout Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="🏠" FontSize="24" HorizontalOptions="Center"/>
-            <!-- Línea indicadora de pestaña activa -->
+            <Image Source="home.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
             <BoxView x:Name="ActiveHomeIndicator" HeightRequest="3" WidthRequest="20" Color="{StaticResource PrimaryAccentDark}" Margin="0,2,0,0" HorizontalOptions="Center" IsVisible="False"/>
             <VerticalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnHomeTapped" />
             </VerticalStackLayout.GestureRecognizers>
         </VerticalStackLayout>
 
-        <!-- Tab 2: Dispositivo Smart Ring -->
         <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="💍" FontSize="24" HorizontalOptions="Center"/>
+            <Image Source="smartring.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
             <BoxView x:Name="ActiveDeviceIndicator" HeightRequest="3" WidthRequest="20" Color="{StaticResource PrimaryAccentDark}" Margin="0,2,0,0" HorizontalOptions="Center" IsVisible="False"/>
             <VerticalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnDeviceTapped" />
             </VerticalStackLayout.GestureRecognizers>
         </VerticalStackLayout>
 
-        <!-- Tab 3: Perfil -->
         <VerticalStackLayout Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center">
-            <Label Text="👤" FontSize="24" HorizontalOptions="Center"/>
+            <Image Source="profile.png" WidthRequest="26" HeightRequest="26" HorizontalOptions="Center"/>
             <BoxView x:Name="ActiveProfileIndicator" HeightRequest="3" WidthRequest="20" Color="{StaticResource PrimaryAccentDark}" Margin="0,2,0,0" HorizontalOptions="Center" IsVisible="False"/>
             <VerticalStackLayout.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnProfileTapped" />
