@@ -27,20 +27,22 @@
                        VerticalOptions="Center" 
                        FontSize="14"/>
 
-                <Frame WidthRequest="36" 
-                       HeightRequest="36" 
-                       CornerRadius="18" 
-                       BackgroundColor="Transparent" 
-                       BorderColor="{StaticResource TextPrimary}"
-                       Padding="0" 
-                       HasShadow="False">
+                <Border WidthRequest="36" 
+                        HeightRequest="36" 
+                        BackgroundColor="Transparent" 
+                        Stroke="{StaticResource TextPrimary}"
+                        StrokeThickness="1"
+                        Padding="0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18"/>
+                    </Border.StrokeShape>
                     <Label Text="+" 
                            FontSize="20" 
                            TextColor="{StaticResource TextPrimary}" 
                            HorizontalOptions="Center" 
                            VerticalOptions="Center" 
                            Margin="0,0,0,2"/>
-                </Frame>
+                </Border>
             </StackLayout>
         </Grid>
 
@@ -52,17 +54,17 @@
                        FontSize="20"
                        TextColor="{StaticResource TextPrimary}" />
 
-                <Frame Style="{StaticResource CardStyle}" Padding="20,15">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <VerticalStackLayout Spacing="10">
                         <Label Text="Historial de Fatiga" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center"/>
 
                         <GraphicsView x:Name="FatigueChartView" 
                                       HeightRequest="150" 
-                                      HorizontalOptions="FillAndExpand" />
+                                      HorizontalOptions="Fill" />
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
-                <Frame Style="{StaticResource CardStyle}" Padding="20,15">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="ÍNDICE DE ALERTA" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
                         <Button Grid.Row="1" Grid.Column="0" 
@@ -71,17 +73,22 @@
                                 HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
                                 Clicked="OnAlertIndexTapped"/>
 
-                        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#F5F0FF" HasShadow="False" Padding="0" VerticalOptions="Center">
+                        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" 
+                                WidthRequest="60" HeightRequest="60" 
+                                BackgroundColor="#F5F0FF" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30"/>
+                            </Border.StrokeShape>
                             <Image Source="alerta.png" 
                                    WidthRequest="50" 
                                    HeightRequest="50" 
                                    HorizontalOptions="Center" 
                                    VerticalOptions="Center" />
-                        </Frame>
+                        </Border>
                     </Grid>
-                </Frame>
+                </Border>
 
-                <Frame Style="{StaticResource CardStyle}" Padding="20,15">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="RITMO CARDÍACO" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
                         <Button Grid.Row="1" Grid.Column="0" 
@@ -90,17 +97,22 @@
                                 HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
                                 Clicked="OnHeartRateTapped"/>
 
-                        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#FFF0F2" HasShadow="False" Padding="0" VerticalOptions="Center">
+                        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" 
+                                WidthRequest="60" HeightRequest="60" 
+                                BackgroundColor="#FFF0F2" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30"/>
+                            </Border.StrokeShape>
                             <Image Source="cardio.png" 
                                    WidthRequest="60" 
                                    HeightRequest="60" 
                                    HorizontalOptions="Center" 
                                    VerticalOptions="Center" />
-                        </Frame>
+                        </Border>
                     </Grid>
-                </Frame>
+                </Border>
 
-                <Frame Style="{StaticResource CardStyle}" Padding="20,15">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <Grid ColumnDefinitions="*, Auto" RowDefinitions="Auto, Auto" RowSpacing="10">
                         <Label Grid.Row="0" Grid.Column="0" Text="OXÍGENO" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center"/>
                         <Button Grid.Row="1" Grid.Column="0" 
@@ -109,14 +121,16 @@
                                 HeightRequest="45" HorizontalOptions="Start" Padding="20,0"
                                 Clicked="OnOxygenTapped"/>
 
-                        <Frame Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" WidthRequest="60" HeightRequest="60" CornerRadius="30" BackgroundColor="#E57373" 
-                               HasShadow="False" 
-                               Padding="0" 
-                               VerticalOptions="Center">
+                        <Border Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" 
+                                WidthRequest="60" HeightRequest="60" 
+                                BackgroundColor="#E57373" StrokeThickness="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="30"/>
+                            </Border.StrokeShape>
                             <Label Text="O₂" FontSize="22" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center"/>
-                        </Frame>
+                        </Border>
                     </Grid>
-                </Frame>
+                </Border>
 
             </VerticalStackLayout>
         </ScrollView>

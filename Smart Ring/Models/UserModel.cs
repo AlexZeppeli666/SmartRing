@@ -17,8 +17,12 @@ public class UserModel
     [MaxLength(100)]
     public string LastNameMaternal { get; set; } = string.Empty;
 
-    [Unique, MaxLength(50)] 
+    [Unique, MaxLength(50)]
     public string Username { get; set; } = string.Empty;
+
+    // NUEVO CAMPO: Guardará el género seleccionado
+    [MaxLength(20)]
+    public string Gender { get; set; } = string.Empty;
 
     public string Password { get; set; } = string.Empty;
 }

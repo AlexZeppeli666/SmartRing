@@ -20,6 +20,26 @@ public partial class TopBar : ContentView
     public TopBar()
     {
         InitializeComponent();
+
+        // AGREGADO: Evaluamos la ruta en cuanto el componente se dibuje en pantalla
+        this.Loaded += EvaluateBackButtonVisibility;
+    }
+
+    private void EvaluateBackButtonVisibility(object? sender, EventArgs e)
+    {
+        if (Shell.Current?.CurrentState?.Location == null) return;
+
+        string currentRoute = Shell.Current.CurrentState.Location.ToString();
+
+        // Si la ruta contiene el Perfil o el accesorio Wearable, ocultamos el botón de regresar
+        if (currentRoute.Contains("ProfilePage") || currentRoute.Contains("WearableAccessoryPage"))
+        {
+            BackButton.IsVisible = false;
+        }
+        else
+        {
+            BackButton.IsVisible = true;
+        }
     }
 
     private static void OnTitleChanged(BindableObject bindable, object oldValue, object newValue)

@@ -11,17 +11,20 @@
             <VerticalStackLayout Spacing="0" VerticalOptions="Center">
 
                 <VerticalStackLayout Spacing="14" HorizontalOptions="Center" Margin="0,0,0,30">
-                    <Frame WidthRequest="150" HeightRequest="150" CornerRadius="75"
-                           BackgroundColor="{StaticResource PrimaryAccent}"
-                           Padding="0" HasShadow="False" HorizontalOptions="Center"
-                           IsClippedToBounds="True">
+                    <Border WidthRequest="150" HeightRequest="150"
+                            BackgroundColor="{StaticResource PrimaryAccent}"
+                            StrokeThickness="0" HorizontalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="75"/>
+                        </Border.StrokeShape>
                         <Image Source="smartring.png" Aspect="AspectFill" />
-                    </Frame>
+                    </Border>
+
                     <Label Text="SMART RING" FontSize="34" FontAttributes="Bold"
                            TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
                 </VerticalStackLayout>
 
-                <Frame Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <VerticalStackLayout Spacing="18">
                         <Label Text="Formulario de Registro" FontSize="16" TextColor="{StaticResource TextPrimary}"
                                HorizontalOptions="Center" />
@@ -31,7 +34,6 @@
                                    Placeholder="Nombre(s)" 
                                    Style="{StaticResource UnderlineEntry}"
                                    Grid.Row="0" />
-
                             <BoxView Grid.Row="1" HeightRequest="1.5" Color="{StaticResource PrimaryAccentDark}" InputTransparent="True">
                                 <BoxView.Triggers>
                                     <DataTrigger TargetType="BoxView" Binding="{Binding IsFocused, Source={x:Reference EntryFirstName}}" Value="True">
@@ -47,7 +49,6 @@
                                    Placeholder="Apellido Paterno" 
                                    Style="{StaticResource UnderlineEntry}"
                                    Grid.Row="0" />
-
                             <BoxView Grid.Row="1" HeightRequest="1.5" Color="{StaticResource PrimaryAccentDark}" InputTransparent="True">
                                 <BoxView.Triggers>
                                     <DataTrigger TargetType="BoxView" Binding="{Binding IsFocused, Source={x:Reference EntryLastNamePaternal}}" Value="True">
@@ -63,7 +64,6 @@
                                    Placeholder="Apellido Materno" 
                                    Style="{StaticResource UnderlineEntry}"
                                    Grid.Row="0" />
-
                             <BoxView Grid.Row="1" HeightRequest="1.5" Color="{StaticResource PrimaryAccentDark}" InputTransparent="True">
                                 <BoxView.Triggers>
                                     <DataTrigger TargetType="BoxView" Binding="{Binding IsFocused, Source={x:Reference EntryLastNameMaternal}}" Value="True">
@@ -79,7 +79,6 @@
                                    Placeholder="Usuario" 
                                    Style="{StaticResource UnderlineEntry}"
                                    Grid.Row="0" />
-
                             <BoxView Grid.Row="1" HeightRequest="1.5" Color="{StaticResource PrimaryAccentDark}" InputTransparent="True">
                                 <BoxView.Triggers>
                                     <DataTrigger TargetType="BoxView" Binding="{Binding IsFocused, Source={x:Reference EntryUsername}}" Value="True">
@@ -90,13 +89,29 @@
                             </BoxView>
                         </Grid>
 
+                        <VerticalStackLayout Spacing="6" Margin="4,0">
+                            <Label Text="Género:" FontSize="14" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" />
+                            <HorizontalStackLayout Spacing="20">
+                                <RadioButton x:Name="RadMasculino" 
+                                             Content="Masculino" 
+                                             GroupName="RegisterGender"
+                                             IsChecked="True" 
+                                             TextColor="{StaticResource TextPrimary}" 
+                                             BackgroundColor="Transparent" />
+                                <RadioButton x:Name="RadFemenino" 
+                                             Content="Femenino" 
+                                             GroupName="RegisterGender"
+                                             TextColor="{StaticResource TextPrimary}" 
+                                             BackgroundColor="Transparent" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+
                         <Grid RowDefinitions="Auto, Auto">
                             <Entry x:Name="EntryPassword" 
                                    Placeholder="Contraseña" 
                                    IsPassword="True"
                                    Style="{StaticResource UnderlineEntry}"
                                    Grid.Row="0" />
-
                             <BoxView Grid.Row="1" HeightRequest="1.5" Color="{StaticResource PrimaryAccentDark}" InputTransparent="True">
                                 <BoxView.Triggers>
                                     <DataTrigger TargetType="BoxView" Binding="{Binding IsFocused, Source={x:Reference EntryPassword}}" Value="True">
@@ -112,7 +127,7 @@
                                 Margin="0,10,0,0"
                                 Clicked="OnRegisterClicked" />
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
                 <Label Text="¿Tienes cuenta? Da click aquí"
                        TextColor="{StaticResource PrimaryAccentDark}"

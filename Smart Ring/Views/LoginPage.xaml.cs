@@ -17,7 +17,7 @@ public partial class LoginPage : ContentPage
         // 1. Validación básica de campos vacíos
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            await DisplayAlert("Campos Vacíos", "Por favor, ingresa tu usuario y contraseña.", "OK");
+            await DisplayAlertAsync("Campos Vacíos", "Por favor, ingresa tu usuario y contraseña.", "OK");
             return;
         }
 
@@ -28,7 +28,7 @@ public partial class LoginPage : ContentPage
 
             if (dbService == null)
             {
-                await DisplayAlert("Error", "No se pudo conectar a la base de datos local.", "OK");
+                await DisplayAlertAsync("Error", "No se pudo conectar a la base de datos local.", "OK");
                 return;
             }
 
@@ -40,26 +40,29 @@ public partial class LoginPage : ContentPage
                 // ==================== 💡 ASIGNAR LA SESIÓN GLOBAL ====================
                 // Guardamos los datos reales extraídos de SQLite antes de ir al Home
                 SessionService.UsuarioActual = usuarioValido;
-                SessionService.NombreUsuario = usuarioValido.FirstName; // Aquí se guardará "Phany" (o el nombre real)
+                SessionService.NombreUsuario = usuarioValido.FirstName;
                 // =====================================================================
 
-                await DisplayAlert("¡Bienvenido(a)!", $"Hola de nuevo, {usuarioValido.FirstName}.", "OK");
+                await DisplayAlertAsync("¡Bienvenido(a)!", $"Hola de nuevo, {usuarioValido.FirstName}.", "OK");
 
-                await Navigation.PushAsync(new HomePage());
+                // CORREGIDO: Usar navegación absoluta del Shell para limpiar la pila 
+                // y activar correctamente los componentes como el BottomNavBar
+                await Shell.Current.GoToAsync("//HomePage");
             }
             else
             {
-                await DisplayAlert("Acceso Denegado", "Usuario o contraseña incorrectos. Inténtalo de nuevo.", "OK");
+                await DisplayAlertAsync("Acceso Denegado", "Usuario o contraseña incorrectos. Inténtalo de nuevo.", "OK");
             }
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Error Crítico", $"Ocurrió un inconveniente: {ex.Message}", "OK");
+            await DisplayAlertAsync("Error Crítico", $"Ocurrió un inconveniente: {ex.Message}", "OK");
         }
     }
 
     private async void OnRegisterTapped(object sender, TappedEventArgs e)
     {
+        // Para ir al registro está bien usar PushAsync si deseas que puedan regresar al Login con la flecha
         await Navigation.PushAsync(new RegisterPage());
     }
 }

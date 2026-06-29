@@ -13,94 +13,120 @@
             <VerticalStackLayout Padding="20" Spacing="18">
 
                 <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
-                    <Frame WidthRequest="120" HeightRequest="120" CornerRadius="60"
-                           BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False">
-                        <Label Text="&#128100;" FontSize="56" HorizontalOptions="Center" VerticalOptions="Center" />
-                    </Frame>
-                    <Label x:Name="LabelName" Text="Juan García" FontSize="22"
+                    <Border WidthRequest="120" 
+                            HeightRequest="120"
+                            StrokeThickness="0"
+                            BackgroundColor="{StaticResource ChipBackground}">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="60"/>
+                        </Border.StrokeShape>
+
+                        <Image Source="profile.png" 
+                               Aspect="AspectFill"
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
+                    </Border>
+
+                    <Label x:Name="LabelName" Text="UserName" FontSize="22"
                            TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
                 </VerticalStackLayout>
 
-                <Frame Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <VerticalStackLayout Spacing="14">
 
-                        <!-- Sexo -->
-                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
-                            <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="Auto,Auto">
-                                <Label Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Text="Sexo" FontAttributes="Bold"
-                                       FontSize="14" TextColor="{StaticResource TextPrimary}" VerticalOptions="Center" />
-                                <RadioButton Grid.Row="0" Grid.Column="1" Content="Masculino" GroupName="Sexo"
-                                             IsChecked="True" TextColor="{StaticResource TextPrimary}" />
-                                <RadioButton Grid.Row="1" Grid.Column="1" Content="Femenino" GroupName="Sexo"
-                                             TextColor="{StaticResource TextPrimary}" />
-                                <Button Grid.Row="0" Grid.RowSpan="2" Grid.Column="2" Text="Guardar"
-                                        Style="{StaticResource SecondaryPillButton}" FontSize="12" HeightRequest="40"
-                                        WidthRequest="92" Clicked="OnSaveSexClicked" />
-                            </Grid>
-                        </Frame>
+                        <Border BackgroundColor="{StaticResource PrimaryAccent}" StrokeThickness="0" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18"/>
+                            </Border.StrokeShape>
+                            <HorizontalStackLayout Spacing="12" VerticalOptions="Center">
+                                <Label Text="Género:" 
+                       FontAttributes="Bold"
+                       FontSize="14" 
+                       TextColor="{StaticResource TextPrimary}" 
+                       VerticalOptions="Center" />
 
-                        <!-- Dispositivo vinculado -->
-                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
+                                <Label x:Name="LabelGender" 
+                       Text="No especificado" 
+                       FontSize="14" 
+                       TextColor="{StaticResource TextSecondary}" 
+                       VerticalOptions="Center" />
+                            </HorizontalStackLayout>
+                        </Border>
+
+                        <Border BackgroundColor="{StaticResource PrimaryAccent}" StrokeThickness="0" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18"/>
+                            </Border.StrokeShape>
                             <VerticalStackLayout Spacing="6">
                                 <Label Text="Dispositivo Vinculado" FontAttributes="Bold" FontSize="14"
-                                       TextColor="{StaticResource TextPrimary}" />
+                       TextColor="{StaticResource TextPrimary}" />
                                 <Label Text="Smart Ring Pro   A4:C1:38:7F:2B   v2.4.1" FontSize="13"
-                                       TextColor="{StaticResource TextSecondary}" />
+                       TextColor="{StaticResource TextSecondary}" />
                             </VerticalStackLayout>
-                        </Frame>
+                        </Border>
 
-                        <!-- Contacto de emergencia -->
-                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
+                        <Border BackgroundColor="{StaticResource PrimaryAccent}" StrokeThickness="0" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18"/>
+                            </Border.StrokeShape>
                             <VerticalStackLayout Spacing="10">
                                 <Label Text="Contacto de emergencia" FontAttributes="Bold" FontSize="14"
-                                       TextColor="{StaticResource TextPrimary}" />
+                       TextColor="{StaticResource TextPrimary}" />
 
                                 <VerticalStackLayout Spacing="2">
                                     <Entry x:Name="EntryEmergencyName" Placeholder="Nombre completo"
-                                           Style="{StaticResource UnderlineEntry}" />
+                           Style="{StaticResource UnderlineEntry}" />
                                     <BoxView HeightRequest="1.5" Color="{StaticResource TextPrimary}" />
                                 </VerticalStackLayout>
 
                                 <VerticalStackLayout Spacing="2">
                                     <Entry x:Name="EntryEmergencyPhone" Placeholder="Celular" Keyboard="Telephone"
-                                           Style="{StaticResource UnderlineEntry}" />
+                           Style="{StaticResource UnderlineEntry}" />
                                     <BoxView HeightRequest="1.5" Color="{StaticResource TextPrimary}" />
                                 </VerticalStackLayout>
 
                                 <HorizontalStackLayout Spacing="10" HorizontalOptions="End">
                                     <Button Text="Guardar" Style="{StaticResource SecondaryPillButton}"
-                                            FontSize="12" HeightRequest="40" WidthRequest="90"
-                                            Clicked="OnSaveEmergencyContactClicked" />
+                            FontSize="12" HeightRequest="40" WidthRequest="90"
+                            Clicked="OnSaveEmergencyContactClicked" />
                                     <Button Text="Editar" Style="{StaticResource SecondaryPillButton}"
-                                            FontSize="12" HeightRequest="40" WidthRequest="90"
-                                            Clicked="OnEditEmergencyContactClicked" />
+                            FontSize="12" HeightRequest="40" WidthRequest="90"
+                            Clicked="OnEditEmergencyContactClicked" />
                                 </HorizontalStackLayout>
                             </VerticalStackLayout>
-                        </Frame>
+                        </Border>
 
-                        <!-- Mensajes SMS -->
-                        <Frame BackgroundColor="{StaticResource PrimaryAccent}" CornerRadius="18" Padding="16" HasShadow="False">
+                        <Border BackgroundColor="{StaticResource PrimaryAccent}" StrokeThickness="0" Padding="16">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18"/>
+                            </Border.StrokeShape>
                             <Grid ColumnDefinitions="*,Auto">
                                 <VerticalStackLayout Grid.Column="0" Spacing="4">
                                     <Label Text="Mensajes SMS" FontAttributes="Bold" FontSize="14"
-                                           TextColor="{StaticResource TextPrimary}" />
+                           TextColor="{StaticResource TextPrimary}" />
                                     <Label Text="Enviar SMS a contacto de emergencia para compartir ubicación en tiempo real."
-                                           FontSize="12" TextColor="{StaticResource TextSecondary}" LineBreakMode="WordWrap" />
+                           FontSize="12" TextColor="{StaticResource TextSecondary}" LineBreakMode="WordWrap" />
                                 </VerticalStackLayout>
                                 <Switch Grid.Column="1" x:Name="SwitchSms" IsToggled="True"
-                                        OnColor="{StaticResource PrimaryAccentDark}" VerticalOptions="Center" />
+                        OnColor="{StaticResource PrimaryAccentDark}" VerticalOptions="Center" />
                             </Grid>
-                        </Frame>
+                        </Border>
 
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
-                <Label Text="Cerrar Sesión" TextColor="{StaticResource PrimaryAccentDark}"
-                       TextDecorations="Underline" FontSize="16" HorizontalOptions="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="OnLogoutTapped" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <Button Text="Cerrar Sesión"
+                        TextColor="White"
+                        BackgroundColor="{StaticResource PrimaryAccentDark}" 
+                        FontAttributes="Bold"
+                        FontSize="15"
+                        CornerRadius="22"
+                        HeightRequest="44"
+                        WidthRequest="180"
+                        HorizontalOptions="Center"
+                        Margin="0,16,0,24"
+                        Clicked="OnLogoutTapped" />
 
             </VerticalStackLayout>
         </ScrollView>

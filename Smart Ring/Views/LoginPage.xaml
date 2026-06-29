@@ -11,17 +11,20 @@
             <VerticalStackLayout Spacing="0" VerticalOptions="Center">
 
                 <VerticalStackLayout Spacing="14" HorizontalOptions="Center" Margin="0,0,0,30">
-                    <Frame WidthRequest="150" HeightRequest="150" CornerRadius="75"
-                           BackgroundColor="{StaticResource PrimaryAccent}"
-                          Padding="0" HasShadow="False" HorizontalOptions="Center"
-                          IsClippedToBounds="True">
+                    <Border WidthRequest="150" HeightRequest="150"
+                            BackgroundColor="{StaticResource PrimaryAccent}"
+                            StrokeThickness="0" HorizontalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="75"/>
+                        </Border.StrokeShape>
                         <Image Source="smartring.png" Aspect="AspectFill" />
-                    </Frame>
+                    </Border>
+
                     <Label Text="SMART RING" FontSize="34" FontAttributes="Bold"
                            TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
                 </VerticalStackLayout>
 
-                <Frame Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <VerticalStackLayout Spacing="18">
                         <Label Text="Ingresa tus datos" FontSize="16" TextColor="{StaticResource TextPrimary}"
                                HorizontalOptions="Center" />
@@ -68,7 +71,7 @@
                                 Margin="0,10,0,0"
                                 Clicked="OnLoginClicked" />
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
                 <Label Text="¿No tienes cuenta? Regístrate Aquí"
                        TextColor="{StaticResource PrimaryAccentDark}"

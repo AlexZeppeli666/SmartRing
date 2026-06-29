@@ -15,7 +15,7 @@ public partial class WearableAccessoryPage : ContentPage
     {
         if (!_isConnected)
         {
-            await DisplayAlert("Anillo desvinculado", "Vincula el anillo antes de ejecutar la alarma.", "OK");
+            await DisplayAlertAsync("Anillo desvinculado", "Vincula el anillo antes de ejecutar la alarma.", "OK");
             return;
         }
 
@@ -28,7 +28,7 @@ public partial class WearableAccessoryPage : ContentPage
 
         if (!ok)
         {
-            await DisplayAlert(
+            await DisplayAlertAsync(
                 "Vibración no disponible",
                 "Este dispositivo no soporta el motor de vibración. " +
                 "En el anillo físico, esta misma señal activaría su actuador háptico.",
@@ -47,7 +47,7 @@ public partial class WearableAccessoryPage : ContentPage
         LabelConnection.Text = "Conectado";
         ConnectionDot.Fill = (Color)Application.Current!.Resources["SuccessSoft"];
         TryVibrate(TimeSpan.FromMilliseconds(120));
-        await DisplayAlert("Vinculado", "El anillo se vinculó correctamente.", "OK");
+        await DisplayAlertAsync("Vinculado", "El anillo se vinculó correctamente.", "OK");
     }
 
     private async void OnUnlinkClicked(object sender, EventArgs e)
@@ -55,7 +55,7 @@ public partial class WearableAccessoryPage : ContentPage
         _isConnected = false;
         LabelConnection.Text = "Desconectado";
         ConnectionDot.Fill = (Color)Application.Current!.Resources["DangerSoft"];
-        await DisplayAlert("Desvinculado", "El anillo se desvinculó del dispositivo.", "OK");
+        await DisplayAlertAsync("Desvinculado", "El anillo se desvinculó del dispositivo.", "OK");
     }
 
     private void OnAnySwitchToggled(object sender, ToggledEventArgs e)

@@ -14,10 +14,21 @@
             <VerticalStackLayout Padding="20" Spacing="16">
 
                 <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
-                    <Frame Grid.Column="0" WidthRequest="110" HeightRequest="110" CornerRadius="20"
-                           BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False">
-                        <Label Text="&#128141;" FontSize="48" HorizontalOptions="Center" VerticalOptions="Center" />
-                    </Frame>
+                    <Border Grid.Column="0" 
+                            WidthRequest="110" 
+                            HeightRequest="110"
+                            BackgroundColor="{StaticResource ChipBackground}" 
+                            StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+
+                        <Image Source="smartring.png" 
+                               Aspect="AspectFill" 
+                               HorizontalOptions="Center" 
+                               VerticalOptions="Center" />
+                    </Border>
+
                     <VerticalStackLayout Grid.Column="1" Spacing="4" VerticalOptions="Center">
                         <Label x:Name="LabelBattery" Text="&#128267; 100%" FontSize="18" FontAttributes="Bold"
                                TextColor="{StaticResource TextPrimary}" />
@@ -36,7 +47,7 @@
                         Clicked="OnUnlinkClicked" />
 
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
-                    <Frame Grid.Column="0" Style="{StaticResource CardStyle}">
+                    <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}">
                         <VerticalStackLayout Spacing="10">
                             <Label Text="RECIBIR NOTIFICACIONES" FontAttributes="Bold" FontSize="12"
                                    TextColor="{StaticResource TextPrimary}" />
@@ -44,8 +55,9 @@
                                     OnColor="{StaticResource PrimaryAccentDark}"
                                     Toggled="OnAnySwitchToggled" />
                         </VerticalStackLayout>
-                    </Frame>
-                    <Frame Grid.Column="1" Style="{StaticResource CardStyle}">
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource CardBorderStyle}">
                         <VerticalStackLayout Spacing="10">
                             <Label Text="ALERTA DE BATERÍA" FontAttributes="Bold" FontSize="12"
                                    TextColor="{StaticResource TextPrimary}" />
@@ -53,11 +65,11 @@
                                     OnColor="{StaticResource PrimaryAccentDark}"
                                     Toggled="OnAnySwitchToggled" />
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                 </Grid>
 
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
-                    <Frame Grid.Column="0" Style="{StaticResource CardStyle}">
+                    <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}">
                         <VerticalStackLayout Spacing="10">
                             <Label Text="VIBRACIÓN" FontAttributes="Bold" FontSize="13"
                                    TextColor="{StaticResource TextPrimary}" />
@@ -72,8 +84,9 @@
                                        HorizontalOptions="End" />
                             </Grid>
                         </VerticalStackLayout>
-                    </Frame>
-                    <Frame Grid.Column="1" Style="{StaticResource CardStyle}">
+                    </Border>
+
+                    <Border Grid.Column="1" Style="{StaticResource CardBorderStyle}">
                         <VerticalStackLayout Spacing="10">
                             <Label Text="ALARMA" FontAttributes="Bold" FontSize="13"
                                    TextColor="{StaticResource TextPrimary}" />
@@ -82,7 +95,7 @@
                                     FontSize="12" HeightRequest="44"
                                     Clicked="OnExecuteAlarmClicked" />
                         </VerticalStackLayout>
-                    </Frame>
+                    </Border>
                 </Grid>
 
             </VerticalStackLayout>

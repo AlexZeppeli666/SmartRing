@@ -12,18 +12,22 @@ public partial class RegisterPage : ContentPage
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
+        // Evaluamos cuál RadioButton se encuentra activo
+        string generoSeleccionado = RadMasculino.IsChecked ? "Masculino" : "Femenino";
+
         var nuevoUsuario = new UserModel
         {
             FirstName = EntryFirstName.Text?.Trim() ?? string.Empty,
             LastNamePaternal = EntryLastNamePaternal.Text?.Trim() ?? string.Empty,
             LastNameMaternal = EntryLastNameMaternal.Text?.Trim() ?? string.Empty,
             Username = EntryUsername.Text?.Trim() ?? string.Empty,
+            Gender = generoSeleccionado, // Guardamos el valor asignado
             Password = EntryPassword.Text ?? string.Empty
         };
 
         if (string.IsNullOrEmpty(nuevoUsuario.FirstName) || string.IsNullOrEmpty(nuevoUsuario.Username) || string.IsNullOrEmpty(nuevoUsuario.Password))
         {
-            await DisplayAlert("Error", "Por favor, llena los datos obligatorios.", "OK");
+            await DisplayAlertAsync("Error", "Por favor, llena los datos obligatorios.", "OK");
             return;
         }
 
@@ -33,7 +37,7 @@ public partial class RegisterPage : ContentPage
 
         if (resultado == -1)
         {
-            await DisplayAlert("Error", "El nombre de usuario ya está registrado.", "OK");
+            await DisplayAlertAsync("Error", "El nombre de usuario ya está registrado.", "OK");
         }
         else if (resultado > 0)
         {
@@ -41,14 +45,14 @@ public partial class RegisterPage : ContentPage
             SessionService.UsuarioActual = nuevoUsuario;
             SessionService.NombreUsuario = nuevoUsuario.FirstName;
 
-            await DisplayAlert("Éxito", "Usuario registrado correctamente.", "OK");
+            await DisplayAlertAsync("Éxito", "Usuario registrado correctamente.", "OK");
 
-            // 2. 💡 CORRECCIÓN AQUÍ: Volvemos al PopAsync para evitar que truene Android
+            // 2. Volvemos al flujo anterior de la pila
             await Navigation.PopAsync();
         }
         else
         {
-            await DisplayAlert("Error", "No se pudo guardar en la base de datos.", "OK");
+            await DisplayAlertAsync("Error", "No se pudo guardar en la base de datos.", "OK");
         }
     }
 

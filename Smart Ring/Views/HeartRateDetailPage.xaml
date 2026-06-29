@@ -14,46 +14,63 @@
             <VerticalStackLayout Padding="20" Spacing="20">
 
                 <Grid ColumnDefinitions="*,Auto">
-                    <Frame Grid.Column="1" WidthRequest="56" HeightRequest="56" CornerRadius="28"
-                           BackgroundColor="{StaticResource ChipBackground}" Padding="0" HasShadow="False">
+                    <Border Grid.Column="1" WidthRequest="56" HeightRequest="56"
+                            BackgroundColor="{StaticResource ChipBackground}" StrokeThickness="0">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="28"/>
+                        </Border.StrokeShape>
                         <Label Text="❤️" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
-                    </Frame>
+                    </Border>
                 </Grid>
 
-                <Frame BackgroundColor="{StaticResource CardColor}" CornerRadius="140"
-                       WidthRequest="240" HeightRequest="240" HorizontalOptions="Center"
-                       Padding="0" HasShadow="True" Margin="0,-20,0,0">
+                <Border BackgroundColor="{StaticResource CardColor}"
+                        WidthRequest="240" HeightRequest="240" HorizontalOptions="Center"
+                        StrokeThickness="0" Margin="0,-20,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="120"/>
+                    </Border.StrokeShape>
+                    <Border.Shadow>
+                        <Shadow Brush="Black" Offset="0,2" Radius="5" Opacity="0.1" />
+                    </Border.Shadow>
+
                     <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="8">
                         <Label x:Name="LabelBpm" Text="-- BPM" FontSize="36" FontAttributes="Bold"
                                TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
                         <Label x:Name="LabelStatusText" Text="• Calculando..." FontSize="14"
                                TextColor="{StaticResource PrimaryAccentDark}" HorizontalOptions="Center" />
                     </VerticalStackLayout>
-                </Frame>
+                </Border>
 
-                <Frame BackgroundColor="{StaticResource CardColor}" CornerRadius="16" Padding="10,6"
-                       HasShadow="False" HorizontalOptions="Center">
+                <Border BackgroundColor="{StaticResource CardColor}" Padding="10,6"
+                        StrokeThickness="0" HorizontalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16"/>
+                    </Border.StrokeShape>
                     <Label x:Name="LabelBadge" Text="Normal" FontSize="13" TextColor="{StaticResource TextPrimary}" />
-                </Frame>
+                </Border>
 
-                <Frame Style="{StaticResource CardStyle}">
+                <Border Style="{StaticResource CardBorderStyle}">
                     <Grid ColumnDefinitions="*,Auto,*,Auto,*">
                         <VerticalStackLayout Grid.Column="0" Spacing="4" HorizontalOptions="Center">
                             <Label Text="Mínimo" FontSize="13" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center" />
                             <Label Text="62 BPM" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
                         </VerticalStackLayout>
+
                         <BoxView Grid.Column="1" WidthRequest="1.5" Color="{StaticResource DividerColor}" />
+
                         <VerticalStackLayout Grid.Column="2" Spacing="4" HorizontalOptions="Center">
                             <Label Text="Promedio" FontSize="13" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center" />
                             <Label Text="75 BPM" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
                         </VerticalStackLayout>
+
                         <BoxView Grid.Column="3" WidthRequest="1.5" Color="{StaticResource DividerColor}" />
+
                         <VerticalStackLayout Grid.Column="4" Spacing="4" HorizontalOptions="Center">
                             <Label Text="Máximo" FontSize="13" TextColor="{StaticResource TextSecondary}" HorizontalOptions="Center" />
                             <Label Text="104 BPM" FontSize="16" FontAttributes="Bold" TextColor="{StaticResource TextPrimary}" HorizontalOptions="Center" />
                         </VerticalStackLayout>
                     </Grid>
-                </Frame>
+                </Border>
 
                 <Label Text="El algoritmo analiza descensos bruscos en este valor combinados con la falta de movimiento para calcular el inicio de somnolencia."
                        FontSize="12" TextColor="{StaticResource TextSecondary}" />

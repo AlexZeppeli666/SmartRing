@@ -31,7 +31,7 @@ public partial class HomePage : ContentPage
 
     private async void OnAddDeviceTapped(object sender, TappedEventArgs e)
     {
-        await DisplayAlert("Agregar dispositivo", "Búsqueda de nuevos anillos disponible próximamente.", "OK");
+        await DisplayAlertAsync("Agregar dispositivo", "Búsqueda de nuevos anillos disponible próximamente.", "OK");
     }
 
     private async void OnHeartRateTapped(object sender, EventArgs e)
