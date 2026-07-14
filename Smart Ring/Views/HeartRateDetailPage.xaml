@@ -8,7 +8,7 @@
 
     <Grid RowDefinitions="Auto,*,Auto">
 
-        <controls:TopBar Grid.Row="0" Title="RITMO CARDÍACO (BPM)" />
+        <controls:TopBar Grid.Row="0" Title="RITMO CARDÍACO" />
 
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="20" Spacing="20">

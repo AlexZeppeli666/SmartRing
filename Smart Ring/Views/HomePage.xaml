@@ -1,50 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Smart_Ring.Componentes"
              xmlns:comp="clr-namespace:Smart_Ring.Componentes"
              x:Class="Smart_Ring.Views.HomePage"
              BackgroundColor="{StaticResource BackgroundColor}">
 
     <Grid RowDefinitions="Auto, *, Auto">
 
-        <Grid Grid.Row="0" 
-              BackgroundColor="{StaticResource PrimaryAccent}" 
-              Padding="20,15" 
-              ColumnDefinitions="*, Auto">
-
-            <Label Text="HOME" 
-                   FontSize="24" 
-                   FontAttributes="Bold" 
-                   TextColor="{StaticResource TextPrimary}" 
-                   VerticalOptions="Center" />
-
-            <StackLayout Grid.Column="1" 
-                         Orientation="Horizontal" 
-                         Spacing="10" 
-                         VerticalOptions="Center">
-                <Label Text="Agregar dispositivo" 
-                       TextColor="{StaticResource TextPrimary}" 
-                       VerticalOptions="Center" 
-                       FontSize="14"/>
-
-                <Border WidthRequest="36" 
-                        HeightRequest="36" 
-                        BackgroundColor="Transparent" 
-                        Stroke="{StaticResource TextPrimary}"
-                        StrokeThickness="1"
-                        Padding="0">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="18"/>
-                    </Border.StrokeShape>
-                    <Label Text="+" 
-                           FontSize="20" 
-                           TextColor="{StaticResource TextPrimary}" 
-                           HorizontalOptions="Center" 
-                           VerticalOptions="Center" 
-                           Margin="0,0,0,2"/>
-                </Border>
-            </StackLayout>
-        </Grid>
+        <controls:TopBar Grid.Row="0" Title="HOMEPAGE" />
 
         <ScrollView Grid.Row="1" VerticalScrollBarVisibility="Never">
             <VerticalStackLayout Padding="20" Spacing="20">

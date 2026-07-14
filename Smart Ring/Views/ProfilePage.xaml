@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:Smart_Ring.Componentes"
+             xmlns:behaviors="clr-namespace:Smart_Ring.Behaviors"
              x:Class="Smart_Ring.Views.ProfilePage"
              BackgroundColor="{StaticResource BackgroundColor}">
 
@@ -76,13 +77,21 @@
 
                                 <VerticalStackLayout Spacing="2">
                                     <Entry x:Name="EntryEmergencyName" Placeholder="Nombre completo"
-                           Style="{StaticResource UnderlineEntry}" />
+                           Style="{StaticResource UnderlineEntry}">
+                                        <Entry.Behaviors>
+                                            <behaviors:TextOnlyBehavior />
+                                        </Entry.Behaviors>
+                                    </Entry>
                                     <BoxView HeightRequest="1.5" Color="{StaticResource TextPrimary}" />
                                 </VerticalStackLayout>
 
                                 <VerticalStackLayout Spacing="2">
-                                    <Entry x:Name="EntryEmergencyPhone" Placeholder="Celular" Keyboard="Telephone"
-                           Style="{StaticResource UnderlineEntry}" />
+                                    <Entry x:Name="EntryEmergencyPhone" Placeholder="Celular" Keyboard="Telephone" MaxLength="12"
+                           Style="{StaticResource UnderlineEntry}">
+                                        <Entry.Behaviors>
+                                            <behaviors:PhoneFormattingBehavior />
+                                        </Entry.Behaviors>
+                                    </Entry>
                                     <BoxView HeightRequest="1.5" Color="{StaticResource TextPrimary}" />
                                 </VerticalStackLayout>
 

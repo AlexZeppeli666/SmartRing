@@ -8,11 +8,14 @@
 
     <Grid RowDefinitions="Auto,*,Auto">
 
+        <!-- Barra Superior -->
         <controls:TopBar Grid.Row="0" Title="WEARABLE" />
 
+        <!-- Contenido Desplazable -->
         <ScrollView Grid.Row="1">
             <VerticalStackLayout Padding="20" Spacing="16">
 
+                <!-- Info de Dispositivo y Batería -->
                 <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
                     <Border Grid.Column="0" 
                             WidthRequest="110" 
@@ -41,58 +44,89 @@
                     </VerticalStackLayout>
                 </Grid>
 
+                <!-- Botones de Vinculación -->
                 <Button x:Name="BtnLink" Text="VINCULAR" Style="{StaticResource SecondaryPillButton}"
                         Clicked="OnLinkClicked" />
                 <Button x:Name="BtnUnlink" Text="DESVINCULAR" Style="{StaticResource SecondaryPillButton}"
                         Clicked="OnUnlinkClicked" />
 
+                <!-- Grid de Ajustes Rápidos (Notificaciones y Batería) -->
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
-                    <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}">
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="RECIBIR NOTIFICACIONES" FontAttributes="Bold" FontSize="12"
+                    <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}" HeightRequest="140">
+                        <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="RECIBIR NOTIFICACIONES" 
+                                   FontAttributes="Bold" 
+                                   FontSize="11"
+                                   HorizontalTextAlignment="Center"
                                    TextColor="{StaticResource TextPrimary}" />
-                            <Switch x:Name="SwitchNotifications" IsToggled="True"
+                            <Switch x:Name="SwitchNotifications" 
+                                    IsToggled="True"
+                                    HorizontalOptions="Center"
                                     OnColor="{StaticResource PrimaryAccentDark}"
                                     Toggled="OnAnySwitchToggled" />
                         </VerticalStackLayout>
                     </Border>
 
-                    <Border Grid.Column="1" Style="{StaticResource CardBorderStyle}">
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="ALERTA DE BATERÍA" FontAttributes="Bold" FontSize="12"
+                    <Border Grid.Column="1" Style="{StaticResource CardBorderStyle}" HeightRequest="140">
+                        <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="ALERTA DE BATERÍA" 
+                                   FontAttributes="Bold" 
+                                   FontSize="11"
+                                   HorizontalTextAlignment="Center"
                                    TextColor="{StaticResource TextPrimary}" />
-                            <Switch x:Name="SwitchBatteryAlert" IsToggled="True"
+                            <Switch x:Name="SwitchBatteryAlert" 
+                                    IsToggled="True"
+                                    HorizontalOptions="Center"
                                     OnColor="{StaticResource PrimaryAccentDark}"
                                     Toggled="OnAnySwitchToggled" />
                         </VerticalStackLayout>
                     </Border>
                 </Grid>
 
+                <!-- Grid de Control de Intensidad Háptica (Slider) y Alarma (Botón Ejecutar) -->
                 <Grid ColumnDefinitions="*,*" ColumnSpacing="14">
-                    <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}">
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="VIBRACIÓN" FontAttributes="Bold" FontSize="13"
+                    <Border Grid.Column="0" Style="{StaticResource CardBorderStyle}" HeightRequest="140">
+                        <VerticalStackLayout Spacing="6" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                            <Label Text="INTENSIDAD (DURACIÓN)" 
+                                   FontAttributes="Bold" 
+                                   FontSize="11"
+                                   HorizontalTextAlignment="Center"
                                    TextColor="{StaticResource TextPrimary}" />
-                            <Slider x:Name="SliderVibration" Minimum="0" Maximum="1" Value="0.5"
+
+                            <Label x:Name="LabelDurationVal" 
+                                   Text="200 ms" 
+                                   FontSize="11"
+                                   HorizontalTextAlignment="Center"
+                                   TextColor="{StaticResource TextSecondary}" />
+
+                            <!-- El movimiento de este Slider disparará la vibración automáticamente de forma controlada -->
+                            <Slider x:Name="SliderVibration"
+                                    Minimum="50"
+                                    Maximum="1000"
+                                    Value="200"
+                                    Margin="10,0"
                                     MinimumTrackColor="{StaticResource PrimaryAccentDark}"
-                                    MaximumTrackColor="{StaticResource DividerColor}"
+                                    MaximumTrackColor="{StaticResource ChipBackground}"
                                     ThumbColor="{StaticResource PrimaryAccentDark}"
-                                    DragCompleted="OnVibrationSliderDragCompleted" />
-                            <Grid ColumnDefinitions="*,*">
-                                <Label Grid.Column="0" Text="Suave" FontSize="11" TextColor="{StaticResource TextSecondary}" />
-                                <Label Grid.Column="1" Text="Fuerte" FontSize="11" TextColor="{StaticResource TextSecondary}"
-                                       HorizontalOptions="End" />
-                            </Grid>
+                                    ValueChanged="OnSliderValueChanged" />
                         </VerticalStackLayout>
                     </Border>
 
-                    <Border Grid.Column="1" Style="{StaticResource CardBorderStyle}">
-                        <VerticalStackLayout Spacing="10">
-                            <Label Text="ALARMA" FontAttributes="Bold" FontSize="13"
+                    <Border Grid.Column="1" Style="{StaticResource CardBorderStyle}" HeightRequest="140">
+                        <VerticalStackLayout Spacing="12" VerticalOptions="Center" HorizontalOptions="Center">
+                            <Label Text="ALARMA" 
+                                   FontAttributes="Bold" 
+                                   FontSize="11"
+                                   HorizontalTextAlignment="Center"
                                    TextColor="{StaticResource TextPrimary}" />
-                            <Button x:Name="BtnAlarm" Text="&#9654; EJECUTAR ALARMA"
+
+                            <Button x:Name="BtnAlarm" 
+                                    Text="&#9654; EJECUTAR"
                                     Style="{StaticResource PillButton}"
-                                    FontSize="12" HeightRequest="44"
+                                    FontSize="11" 
+                                    HeightRequest="38"
+                                    WidthRequest="110"
+                                    HorizontalOptions="Center"
                                     Clicked="OnExecuteAlarmClicked" />
                         </VerticalStackLayout>
                     </Border>
@@ -101,6 +135,7 @@
             </VerticalStackLayout>
         </ScrollView>
 
+        <!-- Barra de Navegación Inferior -->
         <comp:BottomNavBar Grid.Row="2" />
 
     </Grid>

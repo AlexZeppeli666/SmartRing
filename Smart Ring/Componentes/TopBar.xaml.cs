@@ -32,7 +32,7 @@ public partial class TopBar : ContentView
         string currentRoute = Shell.Current.CurrentState.Location.ToString();
 
         // Si la ruta contiene el Perfil o el accesorio Wearable, ocultamos el botón de regresar
-        if (currentRoute.Contains("ProfilePage") || currentRoute.Contains("WearableAccessoryPage"))
+        if (currentRoute.Contains("ProfilePage") || currentRoute.Contains("WearableAccessoryPage") || currentRoute.Contains("HomePage"))
         {
             BackButton.IsVisible = false;
         }
